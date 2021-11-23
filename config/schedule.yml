@@ -1,0 +1,4 @@
+---
+UpdateFeedsJob:
+  class: UpdateFeedsJob
+  cron: "*/5 * * * *"

@@ -1,0 +1,28 @@
+<div class="card rss-article">
+  <div class="card-header">
+    <%= render "shared/feed_icon", feed: article.feed, size: "16" %>&nbsp;
+    <span class="font-weight-lighter"><%= article.feed.title %></span>&nbsp;
+    <%= article.title %>
+    <%= fa_icon "star", class: "floar-right" %>
+  </div>
+  <div class="card-body">
+    <h3><a href="<%= article.url %>" target="_blank" rel="noopener noreferrer"><%= article.title %>&nbsp;<%= fa_icon "external-link-alt" %></a></h3>
+    <p><%= article.author ? "By: #{article.author} " : "" %><%= article.tags.length > 0 ? "(#{article.tags.map(&:title).join(", ")})" : "" %></p>
+    <div class="content">
+      <%= mark_safe article.description %>
+    </div>
+  </div>
+  <div class="card-footer font-weight-lighter">
+    <label for="read-<%= article.id %>">Read</label>&nbsp;
+    <input
+      name="read-<%= article.id %>"
+      type="checkbox"/>&nbsp;
+    <span title="<%= article.pub_date.to_s %>"><%= time_ago_in_words article.pub_date %> ago</span>
+    <div class="btn-group float-right" role="group">
+      <button class="btn btn-secondary btn-xs"><%= fa_icon "angle-double-up" %></button>
+      <button class="btn btn-secondary btn-xs"><%= fa_icon "angle-up" %></button>
+      <button class="btn btn-secondary btn-xs"><%= fa_icon "angle-down" %></button>
+      <button class="btn btn-secondary btn-xs"><%= fa_icon "angle-double-down" %></button>
+    </div>
+  </div>
+</div>

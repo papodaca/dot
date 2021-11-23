@@ -1,0 +1,44 @@
+<div id="<%= dom_id feed %>">
+  <p>
+    <strong>Title:</strong>
+    <%= feed.title %>
+  </p>
+
+  <p>
+    <strong>Url:</strong>
+    <%= feed.url %>
+  </p>
+
+  <p>
+    <strong>Link:</strong>
+    <%= feed.link %>
+  </p>
+
+  <% if feed.icon %>
+  <p>
+    <strong>Icon:</strong>
+    <img src="<%= feed.icon %>" width="32" height="32" />
+    <%= feed.icon %>
+  </p>
+  <% end %>
+
+  <p>
+    <strong>Description:</strong>
+    <%= feed.description %>
+  </p>
+
+  <p>
+    <strong>Error:</strong>
+    <%= feed.error %>
+  </p>
+
+
+  <p>
+    <strong>Directory:</strong>
+    <%= feed.directory.title %>
+  </p>
+
+  <p>
+    <%= link_to "Show this feed", feed %>
+  </p>
+</div>

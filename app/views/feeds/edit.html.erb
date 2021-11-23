@@ -1,0 +1,11 @@
+<%= turbo_frame_tag "details", target: "_top" do %>
+<h1>Edit feed <%= @feed.title %></h1>
+
+<%= render "form", feed: @feed %>
+
+<br>
+
+<div>
+  <%= link_to "Back to feeds", feeds_path %>
+</div>
+<% end %>

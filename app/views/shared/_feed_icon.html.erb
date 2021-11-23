@@ -1,0 +1,5 @@
+<% if feed.icon.present? %>
+<img width="<%= size %>" height="<%= size %>" src="<%= feed.icon %>"/>
+<% else %>
+  <%= fa_icon "rss-square" %>
+<% end %>

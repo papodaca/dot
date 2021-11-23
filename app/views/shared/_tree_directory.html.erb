@@ -1,0 +1,22 @@
+<% if directory.title != 'Root' %>
+  <li>
+    <%= link_to directory_path(directory) do %>
+      <%= fa_icon "folder" %>&nbsp;<%= directory.title %>
+    <% end %>
+  </li>
+<% end %>
+<% if directory.children.size > 0 %>
+  <ul>
+    <% directory.children.each do |dir| %>
+      <%= render 'shared/tree_directory', directory: dir %>
+    <% end %>
+  </ul>
+<% end %>
+<% if directory.feeds.size > 0 %>
+  <ul>
+    <% directory.feeds.each do |feed| %>
+      <li>
+      <%= render 'shared/tree_feed', feed: feed%>
+    <% end %>
+  </ul>
+<% end %>

@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" data-turbo-permanent="true">
+  <div class="col-lg-3">
+    <div class="btn-group btn-group-sm">
+      <button class="btn btn-sm btn-primary" title="Subscribe"><%= fa_icon "rss" %></button>
+      <button class="btn btn-sm btn-secondary" title="New Directory"><%= fa_icon "plus" %></button>
+      <button class="btn btn-sm btn-secondary" title="Import OPML"><%= fa_icon "upload" %></button>
+      <button class="btn btn-sm btn-secondary" title="Export OPML"><%= fa_icon "file-code" %></button>
+      <% if notice %><span class="badge secondary"><%= notice %></span><% end %>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <div class="btn-group btn-group-sm">
+      <button class="btn btn-sm btn-secondary" title="Refresh"><%= fa_icon "redo" %></button>
+      <button class="btn btn-sm btn-secondary" title="Refresh all"><%= fa_icon "sync-alt" %></button>
+    </div>
+    <div class="btn-group btn-group-sm">
+      <button class="btn btn-sm btn-secondary" title="Mark older than 30 days"><%= fa_icon "check" %></button>
+      <button class="btn btn-sm btn-secondary" title="Mark older than 7 days"><%= fas_icon "check-double" %></button>
+      <button class="btn btn-sm btn-secondary" title="Mark all as read"><%= fa_icon "tasks" %></button>
+    </div>
+    <div class="btn-group btn-group-sm btn-group-toggle">
+      <button class="btn btn-sm btn-secondary" title="Unread"><%= fa_icon "eye-slash" %></button>
+      <button class="btn btn-sm btn-secondary" title="All"><%= fa_icon "eye" %></button>
+    </div>
+    <div class="btn-group btn-group-sm">
+      <button class="btn btn-sm btn-secondary" title="Settings"><%= fa_icon "sliders-h" %></button>
+      <button class="btn btn-sm btn-secondary" title="Admin settings"><%= fa_icon "users-cog" %></button>
+      <button class="btn btn-sm btn-secondary" title="Keyboard shortcuts"><%= fa_icon "keyboard" %></button>
+      <button class="btn btm-sm btn-secondary" title="Logout"><%= fas_icon "sign-out-alt" %></button>
+    </div>
+  </div>
+</nav>

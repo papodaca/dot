@@ -1,0 +1,59 @@
+@import '@fortawesome/fontawesome-free/css/all.min';
+@import 'bootswatch/dist/slate/bootstrap';
+
+nav.navbar {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+div.rss-tree {
+  position: fixed;
+  overflow-y: hidden;
+  & a {
+    text-decoration-line: none;
+  }
+  & ul {
+    list-style: none;
+    padding-left: 0.5rem;
+
+    & li {
+      white-space: nowrap;
+      overflow-y: clip;
+      text-overflow: ellipsis;
+      list-style: none;
+      padding-left: 0.5rem;
+
+      & a.edit {
+        display: none;
+      }
+      &:hover {
+        & a.edit {
+          display: inline;
+        }
+      }
+    }
+  }
+}
+
+div.card.rss-article {
+  margin-bottom: 20px;
+  .content {
+    margin-bottom: 1rem;
+  }
+  .card-footer {
+    background-color: transparent;
+    padding: 0.2rem 0.25rem;
+  }
+  .card-footer > label {
+    margin-bottom: 0;
+  }
+}
+
+button.btn-xs {
+  padding: 0.1rem 0.5rem;
+  font-size: 12px;
+  border-radius: 0.2rem;
+}
+
+.float-right {
+  float: right;
+}

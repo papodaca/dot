@@ -1,0 +1,3 @@
+web: bin/rails s
+worker: bin/sidekiq -c 20
+css: yarn build:css --watch
