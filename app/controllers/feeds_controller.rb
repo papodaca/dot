@@ -1,16 +1,15 @@
 class FeedsController < ApplicationController
   before_action :set_feed, only: %i[ show edit update destroy ]
+  before_action :set_page, only: %i[ index show ]
 
   # GET /feeds
   def index
-    @directories = current_user.directories
-    @root = current_user.directories.find_by(title: 'Root')
-    @feeds = Feed.joins(:directory).where("directories.user_id = ? ", current_user.id)
+    @articles = current_user.root.unread_articles.order(:pub_date).page(@page)
   end
 
   # GET /feeds/1
   def show
-    @articles = @feed.articles.where(read: nil).order(:pub_date)
+    @articles = @feed.unread_articles.order(:pub_date).page(@page)
   end
 
   # GET /feeds/new
@@ -52,6 +51,10 @@ class FeedsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_feed
       @feed = Feed.find(params[:id])
+    end
+
+    def set_page
+      @page = params[:page] || 1
     end
 
     # Only allow a list of trusted parameters through.

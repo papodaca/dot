@@ -7,7 +7,7 @@ class ExternalTool
     external_tool('fetch_article', url)
   end
 
-  def self.fetch_feed(url)
+  def self.fetch_feed(url, etag)
     external_tool('fetch_feed', url, etag)
   end
 

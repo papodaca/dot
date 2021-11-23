@@ -1,1 +1,9 @@
-<%= turbo_frame_tag "details", loading: "lazy" %>
+<%= turbo_frame_tag "details", loading: "lazy" do %>
+  <% if @articles.count > 0 %>
+    <% @articles.each do |article| %>
+      <%= render 'shared/article', article: article %>
+    <% end %>
+  <% else %>
+  <%= render 'shared/empty', title: "There are no articles" %>
+  <% end %>
+<% end %>

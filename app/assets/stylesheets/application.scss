@@ -1,5 +1,5 @@
 @import '@fortawesome/fontawesome-free/css/all.min';
-@import 'bootswatch/dist/slate/bootstrap';
+@import 'bootswatch/dist/darkly/bootstrap';
 
 nav.navbar {
   padding-top: 5px;
@@ -56,4 +56,10 @@ button.btn-xs {
 
 .float-right {
   float: right;
+}
+
+.search-results {
+  .search-sub-type {
+    text-transform: capitalize;
+  }
 }

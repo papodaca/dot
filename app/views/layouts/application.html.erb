@@ -10,7 +10,45 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body data-controller="list" data-action="keydown@window->list#handleKeydown">
+<div class="modal fade" id="keyboardHelp" data-list-target="modalKeyboardHelpEl" tabindex="-1" aria-labelledby="keyboardHelp" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-header">Keyboard Shortcuts</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <pre>
+&nbsp;     j                    open next entry
+      k                    open previous entry
+      space/shift+space    moves the page down/up
+      n                    set focus on next entry without opening it
+      p                    set focus on previous entry without opening it
+      v                    open current entry in a new window
+      s                    star/unstar current entry
+      m                    mark as read/unread current entry
+      shift+a              mark all entries as read
+      a                    go to the All view
+      shift+s              go to the Starred view
+      u                    navigate to a subscription by entering the subscription name</pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="searchBox" data-list-target="modalSearchBoxEl" data-action="hidden.bs.modal->list#closeHelp" tabindex="-1" aria-labelledby="searchBox" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form data-action="list#seachSubmit">
+          <input id="searchTextBox" type="search" class="form-control" data-action="list#searchInput" data-list-target="searchBox"/>
+          <div id="searchResults" data-list-target="searchResults"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
     <div class="container-fluid">
       <%= render 'shared/navbar' %>
       <div class="row" style="margin-top: 50px;">

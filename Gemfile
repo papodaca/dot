@@ -9,10 +9,12 @@ gem "cssbundling-rails", github: "rails/cssbundling-rails", branch: "main"
 gem "devise-argon2", "~> 1.1"
 gem "devise", github: "heartcombo/devise", branch: "main"
 gem "fast_jsonparser", github: "Watson1978/fast_jsonparser", branch: "fix-performance"
+gem "foreman", "~> 0.87.2"
 gem "hairtrigger", "~> 0.2.24"
 gem "httparty", "~> 0.20.0"
 gem "importmap-rails", github: "rails/importmap-rails", branch: "main"
 gem "jsonb_accessor", "~> 1.3"
+gem "kaminari", "~> 1.2"
 gem "nokogiri", "~> 1.12"
 gem "pg_search", "~> 2.3"
 gem "pg", "~> 1.2"
@@ -47,4 +49,4 @@ group :development do
   gem "web-console", ">= 4.2.0"
 end
 
-gem "foreman", "~> 0.87.2"
+

@@ -67,7 +67,7 @@ class Article < ApplicationRecord
   end
 
   def remote_fetch
-    article = ExternalTool.fetch_article(url)
+    article = ExternalTool.fetch_article(url) if kind != :podcast
     self.description = article[:content] if article
     update!(description: ApplicationController.helpers.sanitize_html(self))
   end

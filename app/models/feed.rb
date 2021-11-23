@@ -44,6 +44,8 @@ class Feed < ApplicationRecord
     self.link = rss[:link] if link.nil?
     self.description = rss[:description] if description.nil?
     self.icon = Feed.get_icon(link || url) if icon.nil?
+    self.etag = rss[:etag]
+    self.save if self.changed?
 
     rss[:items].map do |item|
       Article.from_item(self, item)

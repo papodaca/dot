@@ -4,6 +4,6 @@
       <%= render 'shared/article', article: article %>
     <% end %>
   <% else %>
-  <%= render 'shared/empty', title: @feed.title %>
+  <%= render 'shared/empty', title: "#{@feed.title} has no articles" %>
   <% end %>
 <% end %>

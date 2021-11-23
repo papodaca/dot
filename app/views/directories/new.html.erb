@@ -1,0 +1,11 @@
+<%= turbo_frame_tag "details" do %>
+  <h1>New directory</h1>
+
+  <%= render "form", directory: @directory %>
+
+  <br>
+
+  <div>
+    <%= link_to "Back to feeds", feeds_path %>
+  </div>
+<% end %>

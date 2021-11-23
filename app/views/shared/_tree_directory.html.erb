@@ -1,6 +1,6 @@
 <% if directory.title != 'Root' %>
   <li>
-    <%= link_to directory_path(directory) do %>
+    <%= link_to directory_path(directory), data: { "list-target": "directory", directory_id: directory.id, directory_title: directory.title } do %>
       <%= fa_icon "folder" %>&nbsp;<%= directory.title %>
     <% end %>
   </li>

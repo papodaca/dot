@@ -27,4 +27,8 @@ class User < ApplicationRecord
 
   def password_salt=(new_salt)
   end
+
+  def root
+    Directory.find_by(title: 'Root', user_id: id)
+  end
 end
