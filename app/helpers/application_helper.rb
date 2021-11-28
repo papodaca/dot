@@ -1,4 +1,21 @@
 module ApplicationHelper
+  def load_articles_counts(user_id)
+    sql = <<-SQL
+      select feeds.id as feed_id, count(articles.id) as total
+      from feeds
+      left join articles on articles.feed_id = feeds.id
+      join directories on directories.id = feeds.directory_id
+      where directories.user_id = :user_id
+      group by feeds.id;
+    SQL
+    totals = ActiveRecord::Base.connection.execute(
+      ApplicationRecord.sanitize_sql_for_assignment([sql, user_id: user_id])
+    )
+    totals.each_with_object({}) do |item, obj|
+      obj[item["feed_id"]] = item["total"]
+    end
+  end
+
   def fa_icon(name, options = {})
     "<i class=\"fa fa-#{name} #{options[:class]}\"></i>".html_safe
   end

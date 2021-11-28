@@ -8,7 +8,7 @@
 <% if directory.children.size > 0 %>
   <ul>
     <% directory.children.each do |dir| %>
-      <%= render 'shared/tree_directory', directory: dir %>
+      <%= render 'shared/tree_directory', directory: dir, totals: totals %>
     <% end %>
   </ul>
 <% end %>
@@ -16,7 +16,7 @@
   <ul>
     <% directory.feeds.each do |feed| %>
       <li>
-      <%= render 'shared/tree_feed', feed: feed%>
+      <%= render 'shared/tree_feed', feed: feed, totals: totals %>
     <% end %>
   </ul>
 <% end %>

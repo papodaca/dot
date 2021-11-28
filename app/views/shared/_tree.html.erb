@@ -1,4 +1,5 @@
 <%= link_to feeds_path do%>
   <%= fa_icon "inbox" %>&nbsp;All
 <% end %>
-<%= render 'shared/tree_directory', directory: Directory.find_by(title: 'Root', user_id: current_user.id) %>
+<% totals = load_articles_counts(current_user.id) %>
+<%= render 'shared/tree_directory', directory: Directory.find_by(title: 'Root', user_id: current_user.id), totals: totals %>
