@@ -1,22 +1,27 @@
-<% if directory.title != 'Root' %>
+<% if tree.item.title != 'Root' %>
   <li>
-    <%= link_to directory_path(directory), data: { "list-target": "directory", directory_id: directory.id, directory_title: directory.title } do %>
-      <%= fa_icon "folder" %>&nbsp;<%= directory.title %>
+    <%= link_to directory_path(tree.item), data: { "list-target": "directory", directory_id: tree.item.id, directory_title: tree.item.title } do %>
+      <%= fa_icon "folder" %>&nbsp;<%= tree.item.title %>
     <% end %>
   </li>
 <% end %>
-<% if directory.children.size > 0 %>
-  <ul>
-    <% directory.children.each do |dir| %>
-      <%= render 'shared/tree_directory', directory: dir, totals: totals %>
+<% if tree.children.size > 0 %>
+  <ul class="directory">
+    <% tree.children.each do |dir| %>
+      <%= render 'shared/tree_directory', tree: dir, totals: totals %>
     <% end %>
   </ul>
 <% end %>
-<% if directory.feeds.size > 0 %>
-  <ul>
-    <% directory.feeds.each do |feed| %>
+<% if tree.feeds.size > 0 %>
+  <ul class="feed-list">
+    <% tree.feeds.each do |feed| %>
       <li>
-      <%= render 'shared/tree_feed', feed: feed, totals: totals %>
+        <% unread_count = totals[feed.id] %>
+        <%= link_to feed_path(feed), data: { "list-target": 'feed', feed_id: feed.id, feed_title: feed.title } do %>
+        <%= feed_icon feed, "16" %>
+        &nbsp;<%= feed.title %>&nbsp;<span class="badge rounded-pill <%= if unread_count&.zero? then 'bg-success' else 'bg-secondary' end %>"><%= unread_count %></span><% end %>
+        <%= link_to edit_feed_path(feed), class: "float-right edit" do %><%= fa_icon "wrench" %><% end %>
+      </li>
     <% end %>
   </ul>
 <% end %>

@@ -5,11 +5,13 @@ class FeedsController < ApplicationController
   # GET /feeds
   def index
     @articles = current_user.root.unread_articles.order(:pub_date).page(@page)
+    @tags = Tag.from_article_list(@articles)
   end
 
   # GET /feeds/1
   def show
     @articles = @feed.unread_articles.order(:pub_date).page(@page)
+    @tags = Tag.from_article_list(@articles)
   end
 
   # GET /feeds/new

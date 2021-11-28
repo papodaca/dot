@@ -16,6 +16,47 @@ module ApplicationHelper
     end
   end
 
+  def load_tree(user_id)
+    totals = load_articles_counts(user_id)
+
+    directories = Directory.where(user_id: user_id)
+    feeds = Feed.joins(:directory).where("directories.user_id = ?", user_id)
+
+    root = directories.select { |dir| dir.title == 'Root' }.first
+
+    OpenStruct.new({
+      totals: totals,
+      item: root,
+      children: load_children(root, directories, feeds),
+      feeds: load_feeds(root, feeds)
+    })
+  end
+
+  def load_children(directory, directories, feeds, level=0)
+    directories.select do |dir|
+      parts = dir.ancestry&.split(':')
+      parts[level] == directory.id if parts.present?
+    end.map do |dir|
+      OpenStruct.new({
+        item: dir,
+        children: load_children(dir, directories, feeds, level+1),
+        feeds: load_feeds(dir, feeds)
+      })
+    end
+  end
+
+  def load_feeds(directory, feeds)
+    feeds.select { |f| f.directory_id == directory.id }
+  end
+
+  def feed_icon(feed, size)
+    if feed.icon.present?
+      "<img width=\"#{size}\" height=\"#{size}\" src=\"#{feed.icon}\"/>".html_safe
+    else
+      fa_icon "rss-square"
+    end
+  end
+
   def fa_icon(name, options = {})
     "<i class=\"fa fa-#{name} #{options[:class]}\"></i>".html_safe
   end

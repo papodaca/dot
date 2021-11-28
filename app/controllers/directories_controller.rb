@@ -4,6 +4,7 @@ class DirectoriesController  < ApplicationController
 
   def show
     @articles = @directory.unread_articles.page(@page)
+    @tags = Tag.from_article_list(@articles)
   end
 
   def new

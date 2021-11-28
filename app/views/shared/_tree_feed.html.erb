@@ -1,7 +1,0 @@
-<% unread_count = totals[feed.id] %>
-<%= link_to feed_path(feed), data: { "list-target": 'feed', feed_id: feed.id, feed_title: feed.title } do %>
-<%= render 'shared/feed_icon', feed: feed, size: '16' %>
-&nbsp;<%= feed.title %>&nbsp;<span class="badge rounded-pill <%= if unread_count&.zero? then 'bg-success' else 'bg-secondary' end %>"><%= unread_count %></span><% end %>
-<%= link_to edit_feed_path(feed), class: "float-right edit" do %><%= fa_icon "wrench" %><% end %>
-</li>
-

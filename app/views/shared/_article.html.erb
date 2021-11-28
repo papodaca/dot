@@ -1,13 +1,14 @@
 <div class="card rss-article" data-list-target="article" data-article-id="<%= article.id %>">
   <div class="card-header">
-    <%= render "shared/feed_icon", feed: article.feed, size: "16" %>&nbsp;
+    <%= feed_icon article.feed, "16" %>&nbsp;
     <span class="font-weight-lighter"><%= article.feed.title %></span>&nbsp;
     <%= article.title %>
     <%= fa_icon "star", class: "float-right" %>
   </div>
   <div class="card-body">
     <h3><a href="<%= article.url %>" target="_blank" rel="noopener noreferrer"><%= article.title %>&nbsp;<%= fa_icon "external-link-alt" %></a></h3>
-    <p><%= article.author ? "By: #{article.author} " : "" %><%= article.tags.length > 0 ? "(#{article.tags.map(&:title).join(", ")})" : "" %></p>
+    <% article_tags = @tags.select { |t| t.article_id == article.id } %>
+    <p><%= article.author ? "By: #{article.author} " : "" %><%= article_tags.length > 0 ? "(#{article_tags.map(&:title).join(", ")})" : "" %></p>
     <div class="content">
       <%= mark_safe article.description %>
     </div>
