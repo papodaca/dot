@@ -10,7 +10,8 @@ export default class extends Controller {
     'modalKeyboardHelpEl',
     'modalSearchBoxEl',
     'searchBox',
-    'searchResults'
+    'searchResults',
+    'inputSearch'
   ]
 
   initialize() {
@@ -55,6 +56,12 @@ export default class extends Controller {
       })
     });
     this.fuse = new Fuse(this.searchItems, {keys: ['title']})
+  }
+
+  submitSearch(event) {
+    event.preventDefault && event.preventDefault();
+    const text = this.inputSearchTarget.value
+    Turbo.visit(`/articles?q=${encodeURIComponent(text)}`)
   }
 
   toggleHelp() {

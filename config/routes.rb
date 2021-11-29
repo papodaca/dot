@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :feeds
   resources :directories
+  resources :articles, only: [:index]
 
   mount Sidekiq::Web => '/sidekiq'
 end

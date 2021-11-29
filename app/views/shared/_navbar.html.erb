@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" data-turbo-permanent="true">
-  <div class="col-lg-3">
+  <div class="col-lg-3" style="margin-left: 0.5rem;">
     <div class="btn-group btn-group-sm">
       <%= link_to new_feed_path, class: "btn btn-sm btn-primary", title: "Subscribe" do %>
         <%= fa_icon "rss" %>
@@ -12,7 +12,7 @@
       <% if notice %><span class="badge secondary"><%= notice %></span><% end %>
     </div>
   </div>
-  <div class="col-lg-3">
+  <div class="col-lg-9">
     <div class="btn-group btn-group-sm">
       <button class="btn btn-sm btn-secondary" title="Refresh"><%= fa_icon "redo" %></button>
       <button class="btn btn-sm btn-secondary" title="Refresh all"><%= fa_icon "sync-alt" %></button>
@@ -32,5 +32,17 @@
       <button class="btn btn-sm btn-secondary" title="Keyboard shortcuts" data-bs-toggle="modal" data-bs-target="#keyboardHelp"><%= fa_icon "keyboard" %></button>
       <button class="btn btm-sm btn-secondary" title="Logout" data-action="list#logout"><%= fas_icon "sign-out-alt" %></button>
     </div>
+    <form style="display: inline-block; float: right; margin-right: 1rem;" data-action="list#submitSearch">
+      <label class="visually-hidden" for="search-box">Search</label>
+      <div class="input-group">
+        <div class="input-group-text"><%= fas_icon "search" %></div>
+        <input type="text" class="form-control form-control-dark"
+          id="search-box" data-list-target="inputSearch" placeholder="Search"
+          <% if params[:q].present? %>
+          value="<%= params[:q] %>"
+          <% end %>
+          />
+      </div>
+    </form>
   </div>
 </nav>

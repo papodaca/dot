@@ -68,7 +68,11 @@ module ApplicationHelper
   # const fixUrl = (url) => `${(new URL(article.url)).origin}/${url}`;
   def fix_url(url, article_url)
     uri = URI(article_url)
-    "#{uri.scheme}://#{uri.host}/#{url}"
+    if url.start_with?("/")
+      "#{uri.scheme}://#{uri.host}#{url}"
+    else
+      "#{uri.scheme}://#{uri.host}/#{url}"
+    end
   end
 
   def sanitize_html(article)
