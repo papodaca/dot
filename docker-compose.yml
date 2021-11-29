@@ -6,7 +6,9 @@ services:
       DATABASE_HOST: db
       REDIS_URL: redis://redis:6379/1
       REDIS_HOST: redis
-    command: ['bundle', 'exec', 'rails', 's', '--port=3000', '--binding=0.0.0.0']
+    command: ['bundle', 'exec', 'foreman', 'start', '-f', 'Procfile.dev']
+    volumes:
+      - ./: /app
     ports:
       - 3000:3000
   sidekiq:
